@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2AF04E01FA1B8AF00C6EC6B /* PageViewScroVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AF04DF1FA1B8AF00C6EC6B /* PageViewScroVC.m */; };
 		D2B496E01FA08B5A00BC9465 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B496DF1FA08B5A00BC9465 /* main.m */; };
 		D2B496E31FA08B5A00BC9465 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B496E21FA08B5A00BC9465 /* AppDelegate.m */; };
 		D2B496E61FA08B5A00BC9465 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B496E51FA08B5A00BC9465 /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		D2B496EE1FA08B5A00BC9465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B496EC1FA08B5A00BC9465 /* LaunchScreen.storyboard */; };
 		D2B496F91FA08B5A00BC9465 /* PageViewVCDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B496F81FA08B5A00BC9465 /* PageViewVCDemoTests.m */; };
 		D2B497041FA08B5A00BC9465 /* PageViewVCDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B497031FA08B5A00BC9465 /* PageViewVCDemoUITests.m */; };
+		D2B497131FA08FBC00BC9465 /* PageViewCurlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B497121FA08FBC00BC9465 /* PageViewCurlVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2AF04DE1FA1B8AF00C6EC6B /* PageViewScroVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewScroVC.h; sourceTree = "<group>"; };
+		D2AF04DF1FA1B8AF00C6EC6B /* PageViewScroVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewScroVC.m; sourceTree = "<group>"; };
 		D2B496DB1FA08B5A00BC9465 /* PageViewVCDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageViewVCDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B496DF1FA08B5A00BC9465 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2B496E11FA08B5A00BC9465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		D2B496FF1FA08B5A00BC9465 /* PageViewVCDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PageViewVCDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B497031FA08B5A00BC9465 /* PageViewVCDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewVCDemoUITests.m; sourceTree = "<group>"; };
 		D2B497051FA08B5A00BC9465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B497111FA08FBC00BC9465 /* PageViewCurlVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewCurlVC.h; sourceTree = "<group>"; };
+		D2B497121FA08FBC00BC9465 /* PageViewCurlVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewCurlVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +107,13 @@
 		D2B496DD1FA08B5A00BC9465 /* PageViewVCDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D2B496E11FA08B5A00BC9465 /* AppDelegate.h */,
-				D2B496E21FA08B5A00BC9465 /* AppDelegate.m */,
+				D2B496E71FA08B5A00BC9465 /* Main.storyboard */,
 				D2B496E41FA08B5A00BC9465 /* ViewController.h */,
 				D2B496E51FA08B5A00BC9465 /* ViewController.m */,
-				D2B496E71FA08B5A00BC9465 /* Main.storyboard */,
-				D2B496EA1FA08B5A00BC9465 /* Assets.xcassets */,
-				D2B496EC1FA08B5A00BC9465 /* LaunchScreen.storyboard */,
-				D2B496EF1FA08B5A00BC9465 /* Info.plist */,
+				D2AF04DE1FA1B8AF00C6EC6B /* PageViewScroVC.h */,
+				D2AF04DF1FA1B8AF00C6EC6B /* PageViewScroVC.m */,
+				D2B497111FA08FBC00BC9465 /* PageViewCurlVC.h */,
+				D2B497121FA08FBC00BC9465 /* PageViewCurlVC.m */,
 				D2B496DE1FA08B5A00BC9465 /* Supporting Files */,
 			);
 			path = PageViewVCDemo;
@@ -117,6 +122,11 @@
 		D2B496DE1FA08B5A00BC9465 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D2B496E11FA08B5A00BC9465 /* AppDelegate.h */,
+				D2B496E21FA08B5A00BC9465 /* AppDelegate.m */,
+				D2B496EA1FA08B5A00BC9465 /* Assets.xcassets */,
+				D2B496EC1FA08B5A00BC9465 /* LaunchScreen.storyboard */,
+				D2B496EF1FA08B5A00BC9465 /* Info.plist */,
 				D2B496DF1FA08B5A00BC9465 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -273,7 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B497131FA08FBC00BC9465 /* PageViewCurlVC.m in Sources */,
 				D2B496E61FA08B5A00BC9465 /* ViewController.m in Sources */,
+				D2AF04E01FA1B8AF00C6EC6B /* PageViewScroVC.m in Sources */,
 				D2B496E31FA08B5A00BC9465 /* AppDelegate.m in Sources */,
 				D2B496E01FA08B5A00BC9465 /* main.m in Sources */,
 			);
@@ -507,6 +519,7 @@
 				D2B4970A1FA08B5A00BC9465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2B4970B1FA08B5A00BC9465 /* Build configuration list for PBXNativeTarget "PageViewVCDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +528,7 @@
 				D2B4970D1FA08B5A00BC9465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2B4970E1FA08B5A00BC9465 /* Build configuration list for PBXNativeTarget "PageViewVCDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +537,7 @@
 				D2B497101FA08B5A00BC9465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
