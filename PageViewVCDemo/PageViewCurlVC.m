@@ -12,7 +12,7 @@
 
 
 
-@interface PageViewCurlVC ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@interface PageViewCurlVC ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) UIPageViewController *pageVC;
 @property (nonatomic,strong) NSMutableArray *VCs;
@@ -57,7 +57,7 @@
             2.1，如果我们当前屏幕仅展示一个页面（意思就是书脊不在屏幕中间）那么不用设置这个属性,
             2.2，如果设置了UIPageViewControllerSpineLocationMid（书脊在屏幕中间）这个选项,效果是翻开的书这样屏幕展示的就是两个页面,这个属性就必须设置为YES了.
          
-            总结：这个属性控制反面是否产生内容，不受书脊的影响。也就是说2.1那种情况虽然没必要设置YES，但是也可以设置为YES，只不过书脊不在中间，我们无法观看反面内容，如果想美化背面的显示效果，可以这样做（小说里就是这样做的），但是这时候下面四个基本的四个方法调用顺序会变成1，2，2，3，也就是说一次翻页过程中会掉两次2，返回正反面的两个VC
+            总结：这个属性控制反面是否产生内容，不受书脊的影响。也就是说2.1那种情况虽然没必要设置YES，但是也可以设置为YES，只不过书脊不在中间，我们无法观看反面内容，如果想美化背面的显示效果，可以这样做（小说里就是这样做的），但是这时候下面四个基本的四个方法调用顺序会变成2，2，1，3，也就是说一次翻页过程中会掉两次2，返回正反面的两个VC
          */
         _pageVC.doubleSided = YES;//设置双页显示，一次展示两页
 
@@ -107,7 +107,7 @@
  *                              最基本、最重要的四个方法
      1，无论翻页是通过点击手势、还是滑动手势：
             doubleSided = YES:
-                 中间部分翻页时调用顺序：1，2，2，3
+                 中间部分翻页时调用顺序：2，2，1，3
                  首页（继续上翻）、末页（继续下翻）翻页时调用顺序：2一次（1，3都不会走）
             doubleSided = NO:
                  中间部分翻页时调用顺序：1，2，3
@@ -127,6 +127,7 @@
 //展示下一个VC ---2
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    NSLog(@"↓↓↓↓↓↓↓↓");
     NSInteger index = [self.VCs indexOfObject:viewController];
     if ((index == self.VCs.count -1) || (index == NSNotFound))
     {
@@ -140,6 +141,7 @@
 //展示上一个VC ---2
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    NSLog(@"↑↑↑↑↑↑↑↑");
     NSInteger index = [self.VCs indexOfObject:viewController];
     if ((index == 0) || (index == NSNotFound))
     {

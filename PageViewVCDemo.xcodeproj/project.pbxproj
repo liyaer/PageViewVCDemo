@@ -217,6 +217,7 @@
 				TargetAttributes = {
 					D2B496DA1FA08B5A00BC9465 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = K9LCV5Z527;
 						ProvisioningStyle = Automatic;
 					};
 					D2B496F31FA08B5A00BC9465 = {
@@ -436,7 +437,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K9LCV5Z527;
 				INFOPLIST_FILE = PageViewVCDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.du.PageViewVCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,7 +450,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K9LCV5Z527;
 				INFOPLIST_FILE = PageViewVCDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.du.PageViewVCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
