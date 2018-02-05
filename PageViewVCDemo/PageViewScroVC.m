@@ -96,9 +96,13 @@
 #pragma mark - delegate and dataSource
 /*
  *                          最基本、最重要的四个方法
-     未设置UIPageControl（一般不会设置），那么完全依靠手势实现切换，调用顺序是1，2，3；首页（继续上翻）、末页（继续下翻）只会响应一次3，之后继续首页上翻、末页下翻1，2，3都不会响应
+    未设置UIPageControl（一般不会设置）
+        完全依靠手势实现切换，调用顺序是：1，2，3（翻页成功）；1，2（翻页失败）。首页（继续上翻）、末页（继续下翻）只会响应一次2，之后继续首页上翻、末页下翻1，2，3都不会响应（注意：不是绝对的，通常情况下是这样，测试时默写操作可能不是这样）
+        注意：1，scro类型的调用顺序和curl类型的不一样！但是里面关于index的处理却是一样的，这一点曾经令我相当疑惑！两种类型的异同在各自方法中有详解
+             2，首页首次翻页时，会先立刻调用两次3，一次before，一次after，哪个先调和本次的手势方向有关
         
-     设置了UIPageControl，手势切换（全程手势切换）调用顺序不变（同上），但是通过点击（全程点击）UIPageControl实现切换的话，调用顺序变成1，3，2（注意：如果手势、点击交叉使用，顺序就混乱了）
+    设置了UIPageControl
+        手势切换（全程手势切换）调用顺序不变（同上），但是通过点击（全程点击）UIPageControl实现切换的话，调用顺序变成1，3，2（注意：如果手势、点击交叉使用，顺序就混乱了）
  */
 //开始翻页 ---1
 -(void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
@@ -112,6 +116,7 @@
 //翻页结束 ---2
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
 {
+    //previousViewControllers里面是翻页前的VC
     if (completed)
     {
         UIViewController *vc = previousViewControllers.firstObject;
@@ -128,13 +133,25 @@
 //展示下一个VC ---3
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    /*
+        viewController是当前显示的VC
+            scro:但因为调用顺序是1，2，3，此时已翻页完毕，这个index实际上是翻页完成后VC的index，而不是翻页前的VC的index（界面效果：已经动画切换到了下个VC才调用这里）
+            curl:调用顺序是3，1，2，此时翻页还未开始，这个index是翻页前的VC的index（界面效果：还未开始动画切换就调用这里）
+     */
     NSInteger index = [self.VCs indexOfObject:viewController];
     self.currentIndex = index;
+    NSLog(@"后后后后后后后后：%ld",index);
     if ((index == self.VCs.count -1) || (index == NSNotFound))
     {
         NSLog(@"当前已经是最后一页");
         return nil;
     }
+    /*
+        下面两步操作，无论scro还是curl，返回的都是“当前正在显示VC”的下一个VC，但是：
+            scro:翻页早已结束，当前显示的已经是我们期望的VC。此时执行下面操作，返回的下一个VC并不是我们所期望出现在屏幕上的（逻辑值不正常，但尽管逻辑上是返回的是期望VC的下一个VC，可是屏幕显示依然使我们期望的VC，等于说这两步操作看起来貌似没起作用）
+            curl:翻页还未开始，当前显示的是翻页前的VC。此时执行下面操作，返回我们期望的VC（逻辑值正常）
+            总结：那么怎么理解scro中的逻辑值反常的现象呢？首先我尝试将scro逻辑值修改为正常的（不执行--或者++，直接返回我们期望的VC），但是运行起来效果却是不正常的！最后，我将scro这一现象暂时称为一种预加载
+     */
     index++;
     return self.VCs[index];
 }
@@ -144,6 +161,7 @@
 {
     NSInteger index = [self.VCs indexOfObject:viewController];
     self.currentIndex = index;
+    NSLog(@"前前前前前前前：%ld",index);
     if ((index == 0) || (index == NSNotFound))
     {
         NSLog(@"当前已经是第一页");
